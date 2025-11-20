@@ -117,3 +117,89 @@ darkModeToggle.addEventListener('click', () => {
         localStorage.setItem('darkMode', 'disabled');
     }
 });
+
+// Modal functionality
+const modal = document.getElementById('modal');
+const modalText = document.getElementById('modalText');
+const closeModal = document.getElementById('closeModal');
+const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+
+// Open modal and set content
+learnMoreButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        modalText.textContent = button.getAttribute('data-content');
+        modal.style.display = 'flex';
+    });
+});
+
+// Close modal
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Close modal when clicking outside of it
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+
+
+
+
+const contactForm = document.getElementById('contactForm');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+
+const nameError = document.getElementById('nameError');
+const emailError = document.getElementById('emailError');
+const messageError = document.getElementById('messageError');
+const successMessage = document.getElementById('successMessage');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Novērš formas noklusējuma iesniegšanu
+
+    let isValid = true;
+
+    // Pārbauda vārda lauku
+    if (nameInput.value.trim() === '') {
+        nameError.style.display = 'block';
+        nameInput.classList.add('error');
+        isValid = false;
+    } else {
+        nameError.style.display = 'none';
+        nameInput.classList.remove('error');
+    }
+
+    // Pārbauda e-pasta lauku
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value.trim())) {
+        emailError.style.display = 'block';
+        emailInput.classList.add('error');
+        isValid = false;
+    } else {
+        emailError.style.display = 'none';
+        emailInput.classList.remove('error');
+    }
+
+    // Pārbauda ziņojuma lauku
+    if (messageInput.value.trim() === '') {
+        messageError.style.display = 'block';
+        messageInput.classList.add('error');
+        isValid = false;
+    } else {
+        messageError.style.display = 'none';
+        messageInput.classList.remove('error');
+    }
+
+    // Ja visi lauki ir derīgi
+    if (isValid) {
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+            contactForm.reset(); // Notīra formu
+        }, 3000);
+    }
+});

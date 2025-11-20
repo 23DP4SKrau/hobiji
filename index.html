@@ -13,6 +13,14 @@
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contacts.html">Contacts</a></li>
+                <li class="dropdown">
+                    <a href="#">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Kaut kas</a></li>
+                        <li><a href="#">Palidziba</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </li>
             </ul>
             <div class="logo">
                 <a href="index.html">
@@ -43,25 +51,34 @@
                 <img src="hobijs1.jpg" alt="Dejošana">
                 <h3>Dejošana</h3>
                 <p>Izbaudi ritmu pie savām mīļākajām dziesmām</p>
-                <button>Uzzināt vairāk</button>
+                <button class="learn-more-btn" data-content="Dejošana ir lielisks veids, kā izpausties un izbaudīt mūziku.">Uzzināt vairāk</button>
             </div>
             <div class="card">
                 <img src="hobijs2.jpg" alt="Fotografēšana">
                 <h3>Fotografēšana</h3>
                 <p>Iemūžini skaistos mirkļus savā fotoaparātā</p>
-                <button>Skatīt galeriju</button>
+                <button class="learn-more-btn" data-content="Fotografēšana ļauj saglabāt atmiņas un radīt mākslu.">Skatīt galeriju</button>
             </div>
             <div class="card">
                 <img src="hobijs3.jpg" alt="Rakstīšana">
                 <h3>Rakstīšana</h3>
-                <p>Izliec savas domas uz papīra</p>
-                <button>Skatīt rakstus</button>
+                <p>Izpaud savas domas un idejas rakstot to ko sirds vēlas</p>
+                <button class="learn-more-btn" data-content="Rakstīšana ir veids, kā dalīties ar savām idejām un stāstiem.">Skatīt rakstus</button>
             </div>
         </div>
     </section>
+</main>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <p id="modalText"></p>
+    </div>
+</div>
 
     <footer>
-        <p>&copy;2025 Hobiji un Intereses. Visas tiesības aizsargātas..</p>
+        <p>&copy;2025 Hobiji un Intereses. Visas tiesības aizsargātas</p>
         <div class="footer-links">
             <p>Seko mums:</p>
             <a href="#">Instagram</a>

@@ -18,20 +18,27 @@
         </div>
     </nav>
     <main>
-      <form id="contactForm" novalidate>
-        <label for="name">Vārds:</label>
-        <input type="text" id="name" name="name" required>
-      
-        <label for="email">E-pasts:</label>
-        <input type="email" id="email" name="email" required>
-      
-        <label for="message">Ziņojums:</label>
-        <textarea id="message" name="message" required></textarea>
-      
-        <button type="submit">Sūtīt</button>
-      
-        <p id="formMessage" style="color: red; margin-top: 10px;"></p>
-      </form>
+      <section class="contact-section">
+        <div class="contact-box">
+            <h2>Sazinieties ar mums</h2>
+            <form id="contactForm">
+                <label for="name">Vārds:</label>
+                <input type="text" id="name" name="name" placeholder="Ievadiet savu vārdu" required>
+                <small class="error-message" id="nameError">Lūdzu, ievadiet savu vārdu.</small>
+    
+                <label for="email">E-pasts:</label>
+                <input type="email" id="email" name="email" placeholder="Ievadiet savu e-pastu" required>
+                <small class="error-message" id="emailError">Lūdzu, ievadiet derīgu e-pasta adresi.</small>
+    
+                <label for="message">Ziņojums:</label>
+                <textarea id="message" name="message" placeholder="Ievadiet savu ziņojumu" required></textarea>
+                <small class="error-message" id="messageError">Lūdzu, ievadiet savu ziņojumu.</small>
+    
+                <button type="submit">Iesniegt</button>
+                <p id="successMessage" class="success-message">Forma veiksmīgi iesniegta!</p>
+            </form>
+        </div>
+    </section>
     </main>
 
   </body>
