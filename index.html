@@ -9,7 +9,12 @@
 <body>
     <header>
         <nav class="navbar">
-            <ul class="nav-links">
+            <button class="nav-toggle" id="navToggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+            <div class="search-wrapper">
+                <label for="searchInput" class="visually-hidden">Meklēt kartītes</label>
+                <input id="searchInput" type="search" placeholder="Meklēt hobijus..." aria-label="Meklēt kartītes">
+            </div>
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contacts.html">Contacts</a></li>
@@ -33,7 +38,7 @@
     </header>
     
     <main>
-        <h1>Hobiji un intereses</h1>
+        <h1 class="h1-left">Hobiji un intereses</h1>
         <h2>Sveicināti manā hobiju mājaslapā!</h2>
         <p>Šeit Jūs varēsiet dalīties ar saviem hobijiem, kā arī iepazīties ar visādiem citiem hobijiem par kuriem iespējams pat neesat dzirdējuši.</p>
         <img src="hobijs.jpg" alt="Mans hobijs">
@@ -46,6 +51,9 @@
 
     <section class="cards-section">
         <h2>Daži no hobijiem kas patīk citiem</h2>
+        <div class="cards-controls">
+            <button id="createCardBtn" class="primary">Izveidot</button>
+        </div>
         <div class="card-container">
             <div class="card">
                 <img src="hobijs1.jpg" alt="Dejošana">
@@ -67,13 +75,32 @@
             </div>
         </div>
     </section>
-</main>
 
 <!-- Modal -->
 <div class="modal" id="modal">
     <div class="modal-content">
         <span class="close-btn" id="closeModal">&times;</span>
         <p id="modalText"></p>
+    </div>
+</div>
+
+<!-- Card create/edit modal -->
+<div class="modal" id="cardModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeCardModal">&times;</span>
+        <h3 id="cardModalTitle">Izveidot kartiņu</h3>
+        <form id="cardForm">
+            <input type="hidden" id="cardId">
+            <label for="cardTitle">Nosaukums</label>
+            <input id="cardTitle" type="text" required>
+            <label for="cardText">Apraksts</label>
+            <textarea id="cardText" rows="4" required></textarea>
+            <label for="cardImage">Attēla ceļš (opc.)</label>
+            <input id="cardImage" type="text" placeholder="hobijs1.jpg">
+            <div style="margin-top:12px;text-align:right;">
+                <button type="submit" id="cardSaveBtn" class="primary">Izveidot</button>
+            </div>
+        </form>
     </div>
 </div>
 

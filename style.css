@@ -1,15 +1,26 @@
+:root{
+    --bg: #f7f8fb;
+    --card: #ffffff;
+    --muted: #6b6b6b;
+    --accent: #ff6fa3;
+    --accent-2: #ff9ccf;
+    --header-grad: linear-gradient(135deg, #ffb6c1, #ff69b4);
+    --radius: 10px;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: #222;
     line-height: 1.6;
+    -webkit-font-smoothing:antialiased;
 }
 
 header {
-    background-color: pink;
-    padding: 10px 15px;;
+    background: var(--header-grad);
+    padding: 18px 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
 }
 
 h1, h2, h3 {
@@ -142,6 +153,22 @@ footer {
     font-weight: bold;
 }
 
+.primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.cards-controls {
+    display:flex;
+    justify-content:flex-end;
+    margin: 12px 0 6px;
+}
+
 .card button:hover {
     background-color:lightcoral;
     transform: scale(1.05);
@@ -241,14 +268,98 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Keep the navbar on a single row so the hamburger sits next to the logo/dark-mode */
     .navbar {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 16px;
+        position: relative;
     }
     .nav-links {
         flex-direction: column;
         gap: 10px;
     }
+    .logo {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .nav-toggle {
+        order: 0;
+    }
+}
+
+/* Hamburger / mobile nav */
+.nav-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        font-size: 1.4rem;
+        color: white;
+        cursor: pointer;
+}
+
+/* Search input in header */
+.search-wrapper {
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+}
+
+.search-wrapper input[type="search"] {
+        padding: 8px 12px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.25);
+        min-width: 220px;
+        font-size: 0.95rem;
+        outline: none;
+        transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.search-wrapper input[type="search"]::placeholder {
+        color: rgba(255,255,255,0.85);
+}
+
+.search-wrapper input[type="search"]:focus {
+        box-shadow: 0 6px 18px rgba(255,105,180,0.12);
+        border-color: rgba(255,255,255,0.6);
+}
+
+/* Keep search compact on small screens */
+@media (max-width: 860px) {
+    .search-wrapper input[type="search"] { min-width: 140px; }
+}
+
+/* visually hidden utility */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+}
+
+/* smaller screens: hide normal nav and show toggle */
+@media (max-width: 860px) {
+    .nav-toggle { display: block; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--card);
+        margin: 0 16px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        flex-direction: column;
+        gap: 8px;
+    }
+    .nav-links.open { display: flex; }
+    .logo { order: 2; }
 }
 
 .nav-links li a.active {
@@ -323,6 +434,49 @@ main, aside {
     padding: 25px;
     margin: 20px auto;
     max-width: 900px;
+}
+
+/* About page layout: text left, picture right */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 28px;
+    align-items: start;
+}
+
+.about-content {
+    text-align: left;
+}
+
+.about-content h1 {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+}
+
+.about-content p {
+    font-size: 1.05rem;
+    color: var(--muted);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 860px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-image {
+        order: 2;
+        margin-top: 16px;
+    }
+    .about-content h1 {
+        font-size: 1.8rem;
+    }
 }
   
 .logo a {
@@ -514,6 +668,127 @@ body.dark-mode p {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Utility to hide cards (used by JS) */
+.card.hidden { display: none !important; }
+
+/* =========================
+   Design refresh overrides
+   (keeps original rules but applies clearer, modern defaults)
+   ========================= */
+:root{
+    --bg: #fff7fb;
+    --card: #ffffff;
+    --muted: #666666;
+    --accent: #ff4f8b;
+    --accent-2: #ff90b8;
+    --header-grad: linear-gradient(135deg,#ff6f98,#ff4f8b);
+    --radius: 14px;
+    --text: #222222;
+    --footer-bg: linear-gradient(135deg,#ff6f98,#ff4f8b);
+    --shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+html { font-size: 16px; }
+body { background: var(--bg); color: var(--text); font-size: 1rem; }
+
+/* Headings: more prominent */
+h1 { font-size: 2.6rem; line-height: 1.05; margin-bottom: 0.6rem; text-align: left; }
+h2 { font-size: 1.6rem; margin-top: 0.25rem; margin-bottom: 0.5rem; }
+h3 { font-size: 1.25rem; }
+
+/* Navbar improvements */
+.navbar { padding: 12px 20px; gap: 12px; }
+.nav-links li a { color: rgba(255,255,255,0.95); background: transparent; padding: 10px 14px; }
+.nav-links li a.active, .nav-links li a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+.logo a { font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
+.logo-img { width: 42px; height: 42px; border-radius: 8px; object-fit: cover; }
+
+/* Search: make it pop on the header */
+.search-wrapper input[type="search"] {
+    background: rgba(255,255,255,0.98);
+    color: #222;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: var(--shadow);
+    min-width: 260px;
+}
+
+/* Primary button polish */
+.primary {
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 1rem;
+    box-shadow: 0 6px 18px rgba(255,79,139,0.18);
+}
+
+/* Cards: larger, cleaner, and more readable */
+.card { width: 340px; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.card img { height: 220px; object-fit: cover; }
+.card h3 { font-size: 1.3rem; margin-top: 12px; }
+.card p { font-size: 1rem; color: var(--muted); padding: 0 18px 18px; }
+.card button { padding: 8px 12px; border-radius: 10px; font-weight: 700; }
+.card .delete-btn { background: #fff0f6; color: #b0003a; border: 1px solid rgba(176,0,58,0.08); }
+
+.card:hover { transform: translateY(-8px) scale(1.01); }
+
+/* About page tweaks */
+.about-content h1 { font-size: 2.4rem; text-align: left; }
+.about-grid { align-items: center; gap: 28px; }
+
+/* Footer: stronger contrast */
+footer { background: var(--footer-bg); color: #fff; padding: 20px; }
+.footer-links a { color: rgba(255,255,255,0.95); margin-left: 8px; }
+
+/* Responsiveness */
+@media (max-width: 860px) {
+    .search-wrapper input[type="search"] { min-width: 150px; }
+    .card { width: 100%; max-width: 420px; }
+    h1 { font-size: 2.0rem; }
+}
+
+@media (max-width: 420px) {
+    .logo-img { width: 36px; height: 36px; }
+    .search-wrapper input[type="search"] { min-width: 120px; }
+}
+
+/* main layout defaults restored (left-align change reverted) */
+
+/* Decorative underline: place compact gradient directly under main H1s */
+h1 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+
+h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 6px;
+    width: 100%;
+    max-width: 420px; /* increased so 'Hobiji un intereses' underline is longer */
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+@media (max-width: 860px) {
+    h1::after { max-width: 280px; }
+}
+
+/* Shift-only class for homepage heading to move h1 + underline further left */
+.h1-left {
+    display: block;
+    transform: none; /* remove translate transforms so margin controls position */
+    margin-left: -20px; /* flush toward the box edge (main padding is 20px) */
+    font-size: 2.9rem;
+}
+
+@media (max-width: 860px) {
+    .h1-left { margin-left: -12px; font-size: 2.1rem; }
+}
+
 /* Default text color for buttons */
 .card button {
     color: white;
@@ -557,4 +832,117 @@ input.error, textarea.error {
     75% {
         transform: translateX(-5px);
     }
+}
+
+/* Mobile-friendly contact form improvements */
+@media (max-width: 640px) {
+    .contact-section {
+        padding: 18px 12px;
+    }
+
+    .contact-box {
+        margin: 8px 12px;
+        padding: 16px;
+        border-radius: 12px;
+        background: var(--card);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .contact-box h2 {
+        margin-top: 0;
+        font-size: 1.25rem;
+        text-align: left;
+    }
+
+    .contact-box form {
+        display: block;
+    }
+
+    .contact-box label {
+        display: block;
+        margin: 8px 0 6px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .contact-box input[type="text"],
+    .contact-box input[type="email"],
+    .contact-box textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,0.08);
+        background: #fff;
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+    }
+
+    .contact-box textarea { min-height: 120px; }
+
+    .contact-box button[type="submit"] {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(255,111,163,0.18);
+        margin-top: 6px;
+    }
+
+    .contact-box .error-message,
+    .contact-box .success-message {
+        display: block;
+        margin: 6px 0 8px;
+        font-size: 0.95rem;
+    }
+
+    /* Grid layout for contact form fields - show two columns on most phones */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        align-items: start;
+    }
+
+    .contact-grid .form-row label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+    }
+
+    .contact-grid .form-row input,
+    .contact-grid .form-row textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(0,0,0,0.08);
+        font-size: 0.95rem;
+        box-sizing: border-box;
+    }
+
+    .contact-grid .form-row.full { grid-column: 1 / -1; }
+
+    /* Reduce surrounding margins so content stays visible on small screens */
+    main, aside {
+        margin: 12px auto;
+        padding: 16px;
+    }
+}
+
+/* Ensure two-column contact grid on larger screens and stack only on very small devices */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: start;
+}
+
+.contact-grid .form-row.full { grid-column: 1 / -1; }
+
+@media (max-width: 420px) {
+    .contact-grid { grid-template-columns: 1fr; }
 }

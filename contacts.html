@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hobiji un intereses</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts — Hobiji un intereses</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
     <nav class="navbar">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contacts.html" class="active">Contacts</a></li>
-        </ul>
-        <div class="logo">
-          <a href="index.html">HobiNams</a>
-        </div>
+      <button class="nav-toggle" id="navToggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links" id="primary-navigation">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contacts.html" class="active">Contacts</a></li>
+      </ul>
+      <div class="logo">
+        <a href="index.html">
+          <button id="darkModeToggle" class="dark-mode-btn">⚫️</button>
+          <img src="house.jpg" alt="HobiNams logo" class="logo-img"> HobiNams
+        </a>
+      </div>
     </nav>
-    <main>
-      <section class="contact-section">
-        <div class="contact-box">
-            <h2>Sazinieties ar mums</h2>
-            <form id="contactForm">
-                <label for="name">Vārds:</label>
-                <input type="text" id="name" name="name" placeholder="Ievadiet savu vārdu" required>
-                <small class="error-message" id="nameError">Lūdzu, ievadiet savu vārdu.</small>
-    
-                <label for="email">E-pasts:</label>
-                <input type="email" id="email" name="email" placeholder="Ievadiet savu e-pastu" required>
-                <small class="error-message" id="emailError">Lūdzu, ievadiet derīgu e-pasta adresi.</small>
-    
-                <label for="message">Ziņojums:</label>
-                <textarea id="message" name="message" placeholder="Ievadiet savu ziņojumu" required></textarea>
-                <small class="error-message" id="messageError">Lūdzu, ievadiet savu ziņojumu.</small>
-    
-                <button type="submit">Iesniegt</button>
-                <p id="successMessage" class="success-message">Forma veiksmīgi iesniegta!</p>
-            </form>
-        </div>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <div class="contact-box">
+        <h2>Sazinieties ar mums</h2>
+        <form id="contactForm">
+          <div class="contact-grid">
+           <h1 class="h1-left">Kontakti</h1>
+            <div class="form-row">
+              <label for="name">Vārds</label>
+              <input type="text" id="name" name="name" placeholder="Ievadiet savu vārdu" required aria-required="true">
+              <small class="error-message" id="nameError">Lūdzu, ievadiet savu vārdu.</small>
+            </div>
+
+            <div class="form-row">
+              <label for="email">E-pasts</label>
+              <input type="email" id="email" name="email" placeholder="Ievadiet savu e-pastu" required aria-required="true">
+              <small class="error-message" id="emailError">Lūdzu, ievadiet derīgu e-pasta adresi.</small>
+            </div>
+
+            <div class="form-row full">
+              <label for="message">Ziņojums</label>
+              <textarea id="message" name="message" placeholder="Ievadiet savu ziņojumu" required aria-required="true"></textarea>
+              <small class="error-message" id="messageError">Lūdzu, ievadiet savu ziņojumu.</small>
+            </div>
+          </div>
+
+          <button type="submit">Iesniegt</button>
+          <p id="successMessage" class="success-message">Forma veiksmīgi iesniegta!</p>
+        </form>
+      </div>
     </section>
-    </main>
+  </main>
 
-  </body>
+  <footer>
+    <p>&copy;2025 Hobiji un Intereses. Visas tiesības aizsargātas</p>
+    <div class="footer-links">
+      <p>Seko mums:</p>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+    </div>
+  </footer>
 
+  <script src="js.js"></script>
+</body>
 </html>

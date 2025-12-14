@@ -1,21 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hobiji un intereses</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Hobiji un intereses</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
     <nav class="navbar">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="contacts.html">Contacts</a></li>
-        </ul>
-        <div class="logo">
-          <a href="index.html">HobiNams</a>
-        </div>
-      </nav>
+      <button class="nav-toggle" id="navToggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links" id="primary-navigation">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li class="dropdown">
+          <a href="#">Services</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Kaut kas</a></li>
+            <li><a href="#">Palidziba</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="logo">
+        <a href="index.html">
+          <button id="darkModeToggle" class="dark-mode-btn">⚫️</button>
+          <img src="house.jpg" alt="HobiNams logo" class="logo-img"> HobiNams
+        </a>
+      </div>
+    </nav>
+  </header>
 
+  <main>
+    <section class="about-grid">
+      <div class="about-content">
+        <h1 class="h1-left">Par mani</h1>
+        <p>
+          Sveiki! Mani sauc Sanija Kraukle un es esmu RVT DP3-4 audzēkne. Man patīk dejot, fotografēt,
+          rakstīt un spēlēt bungas. Katru dienu meklēju jaunus hobijus vai nodarbes, kuras varētu padarīt
+          manu dzīvi interesantāku. Šī mājaslapa ir radīta, lai dalītos ar savām interesēm un iedvesmotu
+          arī citus izmēģināt kaut ko jaunu.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="hobijs.jpg" alt="Par mani bilde">
+      </div>
+    </section>
+  </main>
+
+  <aside>
+    <h3>Ko tu vari darīt šeit</h3>
+    <ul>
+      <li>Uzzināt par jauniem hobijiem</li>
+      <li>Dalīties ar saviem darbiem un pieredzi</li>
+      <li>Sazināties ar citiem hobiju entuziastiem</li>
+    </ul>
+  </aside>
+
+  <footer>
+    <p>&copy;2025 Hobiji un Intereses. Visas tiesības aizsargātas</p>
+    <div class="footer-links">
+      <p>Seko mums:</p>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+    </div>
+  </footer>
+
+  <script src="js.js"></script>
+</body>
 </html>
